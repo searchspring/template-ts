@@ -86,6 +86,7 @@
 		"url": "git+https://github.com/searchspring/template-ts.git"
 	},
 	"scripts": {
+		"build": "rm -rf ./dist && tsc -p tsconfig.build.json",
 		"format": "prettier --write \"**/*.{js,ts,json}\"",
 		"lint": "eslint --fix \"**/*.{js,ts}\"",
 		"prepare": "fixpack",
