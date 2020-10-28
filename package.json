@@ -1,0 +1,96 @@
+{
+	"name": "@searchspring/template-ts",
+	"description": "Template Typescript repo",
+	"version": "0.0.1",
+	"author": "Eric Hacke",
+	"bugs": {
+		"url": "https://github.com/searchspring/template-ts/issues"
+	},
+	"config": {
+		"commitizen": {
+			"path": "cz-conventional-changelog"
+		}
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@commitlint/cli": "^11.0.0",
+		"@commitlint/config-conventional": "^11.0.0",
+		"@istanbuljs/nyc-config-typescript": "^1.0.1",
+		"@searchspring/commitlint-config": "^1.0.0",
+		"@searchspring/eslint-config": "^1.0.5",
+		"@searchspring/prettier": "^1.0.1",
+		"@types/bluebird": "^3.5.32",
+		"@types/fs-extra": "^9.0.1",
+		"@types/getenv": "^1.0.0",
+		"@types/lodash": "^4.14.157",
+		"@types/luxon": "^1.24.1",
+		"@types/mocha": "^8.0.3",
+		"@types/node": "^14.0.22",
+		"@types/semver": "^7.3.1",
+		"@types/sinon": "^9.0.4",
+		"@typescript-eslint/eslint-plugin": "^4.6.0",
+		"@typescript-eslint/parser": "^4.6.0",
+		"chai": "^4.2.0",
+		"commitizen": "^4.1.2",
+		"commitlint": "^11.0.0",
+		"cz-conventional-changelog": "^3.2.0",
+		"dotenv": "^8.2.0",
+		"eslint": "^7.4.0",
+		"eslint-import-resolver-typescript": "^2.0.0",
+		"eslint-plugin-simple-import-sort": "^5.0.3",
+		"fixpack": "^3.0.6",
+		"husky": "^4.2.3",
+		"jsdoc": "^3.6.4",
+		"lint-staged": "^10.2.11",
+		"mocha": "^8.0.1",
+		"nyc": "^15.1.0",
+		"prettier": "^2.0.5",
+		"prettier-eslint-cli": "^5.0.0",
+		"sinon": "^9.0.2",
+		"ts-node": "^9.0.0",
+		"tsconfig-paths": "^3.9.0",
+		"typescript": "^4.0.5"
+	},
+	"files": [
+		"dist/**/*.{js,ts,tsbuildinfo}",
+		"dist/src/commands/templates/*",
+		"docs/**/*"
+	],
+	"homepage": "https://github.com/searchspring/template-ts#readme",
+	"husky": {
+		"hooks": {
+			"commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+			"pre-commit": "lint-staged"
+		}
+	},
+	"keywords": [
+		"repo",
+		"template",
+		"typescript"
+	],
+	"license": "MIT",
+	"lint-staged": {
+		"./package.json": [
+			"fixpack",
+			"prettier --write"
+		],
+		"*.{js,ts}": [
+			"prettier --write",
+			"eslint --fix"
+		]
+	},
+	"main": "index.js",
+	"prettier": "@searchspring/prettier",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/searchspring/template-ts.git"
+	},
+	"scripts": {
+		"format": "prettier --write \"**/*.{js,ts,json}\"",
+		"lint": "eslint --fix \"**/*.{js,ts}\"",
+		"prepare": "fixpack",
+		"prepublishOnly": "npm run build",
+		"test": "nyc mocha --recursive -r source-map-support/register -r ts-node/register -r tsconfig-paths/register --use_strict --exit \"tests/**/*.+(unit|it).+(ts|js)\"",
+		"unit": "nyc mocha --recursive -r source-map-support/register -r ts-node/register -r tsconfig-paths/register --use_strict --exit \"tests/**/*.unit.+(ts|js)\""
+	}
+}
